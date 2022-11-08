@@ -6,7 +6,7 @@ struct node
     struct node *next;
 }*head;
 void createList(int n);
-void insertAtBeginning(int data);
+void insertAtEnd(int data);
 void displayList();
 int main()
 {
@@ -18,7 +18,7 @@ int main()
     displayList();
     printf("\nEnter data to insert at the beginning of the list: ");
     scanf("%d", &data);
-    insertAtBeginning(data);
+    insertAtEnd(data);
     printf("\nUpdated data in the list is:\n");
     displayList();
     return 0;
@@ -61,9 +61,9 @@ void createList(int n)
         printf("Linked List Created Successfully!\n");
     }
 }
-void insertAtBeginning(int data)
+void insertAtEnd(int data)
 {
-    struct node *newNode;
+    struct node *newNode, *temp;
     newNode = (struct node *)malloc(sizeof(struct node));
     if(newNode == NULL)
     {
@@ -72,9 +72,14 @@ void insertAtBeginning(int data)
     else
     {
         newNode -> data = data;
-        newNode -> next = head;
-        head = newNode;
-        printf("\nData inserted successfully at the beginning!\n");
+        newNode -> next = NULL;
+        temp = head;
+        while(temp!=NULL && temp->next!=NULL)
+        {
+            temp = temp -> next;
+        }
+        temp -> next = newNode;
+        printf("\nData inserted successfully at the end!\n");
     }
 }
 void displayList()
