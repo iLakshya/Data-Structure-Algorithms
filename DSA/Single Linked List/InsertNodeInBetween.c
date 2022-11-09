@@ -6,19 +6,21 @@ struct node
     struct node *next;
 }*head;
 void createList(int n);
-void insertAtEnd(int data);
+void insertInBetween(int data, int position);
 void displayList();
 int main()
 {
-    int n, data;
+    int n, data, position;
     printf("Enter the total number of nodes: ");
     scanf("%d", &n);
     createList(n);
     printf("Data in the list is:\n");
     displayList();
-    printf("\nEnter data to insert at the beginning of the list: ");
+    printf("\nEnter data to insert in between the list: ");
     scanf("%d", &data);
-    insertAtEnd(data);
+    printf("Enter the position you want to insert the node: ");
+    scanf("%d", &position);
+    insertInBetween(data, position);
     printf("\nUpdated data in the list is:\n");
     displayList();
     return 0;
@@ -61,8 +63,9 @@ void createList(int n)
         printf("Linked List Created Successfully!\n");
     }
 }
-void insertAtEnd(int data)
+void insertInBetween(int data, int position)
 {
+    int i;
     struct node *newNode, *temp;
     newNode = (struct node *)malloc(sizeof(struct node));
     if(newNode == NULL)
@@ -74,12 +77,24 @@ void insertAtEnd(int data)
         newNode -> data = data;
         newNode -> next = NULL;
         temp = head;
-        while(temp!=NULL && temp->next!=NULL)
+        for(i=2;i<=position;i++)
         {
             temp = temp -> next;
+            if(temp == NULL)
+            {
+                break;
+            }
         }
-        temp -> next = newNode;
-        printf("\nData inserted successfully at the end!\n");
+        if(temp!=NULL)
+        {
+            newNode -> next = temp -> next;
+            temp -> next = newNode;
+            printf("Data Inserted Successfully!");
+        }
+        else
+        {
+            printf("Unable to insert the data at the given position!");
+        }
     }
 }
 void displayList()

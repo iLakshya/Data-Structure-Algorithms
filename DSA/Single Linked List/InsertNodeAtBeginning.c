@@ -82,7 +82,7 @@ void displayList()
     struct node *temp;
     if(head == NULL)
     {
-        printf("List is empty");
+        printf("List is empty!");
     }
     else
     {
