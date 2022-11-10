@@ -16,7 +16,7 @@ int main()
     createList(n);
     printf("Data in the list is:\n");
     displayList();
-    printf("\nEnter data to insert at the beginning of the list: ");
+    printf("\nEnter data to insert at the end of the list: ");
     scanf("%d", &data);
     insertAtEnd(data);
     printf("\nUpdated data in the list is:\n");
@@ -30,7 +30,7 @@ void createList(int n)
     head = (struct node *)malloc(sizeof(struct node));
     if(head == NULL)
     {
-        printf("Unable to allocate memory!");
+        printf("\nUnable to allocate memory!");
         exit(0);
     }
     else
@@ -45,7 +45,7 @@ void createList(int n)
             newNode = (struct node *)malloc(sizeof(struct node));
             if(newNode == NULL)
             {
-                printf("Unable to allocate memory!");
+                printf("\nUnable to allocate memory!");
                 break;
             }
             else
@@ -67,7 +67,7 @@ void insertAtEnd(int data)
     newNode = (struct node *)malloc(sizeof(struct node));
     if(newNode == NULL)
     {
-        printf("Unable to allocate memory!");
+        printf("\nUnable to allocate memory!");
     }
     else
     {
@@ -87,7 +87,7 @@ void displayList()
     struct node *temp;
     if(head == NULL)
     {
-        printf("List is empty!");
+        printf("\nList is empty!");
     }
     else
     {

@@ -32,7 +32,7 @@ void createList(int n)
     head = (struct node *)malloc(sizeof(struct node));
     if(head == NULL)
     {
-        printf("Unable to allocate memory!");
+        printf("\nUnable to allocate memory!");
         exit(0);
     }
     else
@@ -47,7 +47,7 @@ void createList(int n)
             newNode = (struct node *)malloc(sizeof(struct node));
             if(newNode == NULL)
             {
-                printf("Unable to allocate memory!");
+                printf("\nUnable to allocate memory!");
                 break;
             }
             else
@@ -70,7 +70,7 @@ void insertInBetween(int data, int position)
     newNode = (struct node *)malloc(sizeof(struct node));
     if(newNode == NULL)
     {
-        printf("Unable to allocate memory!");
+        printf("\nUnable to allocate memory!");
     }
     else
     {
@@ -93,7 +93,7 @@ void insertInBetween(int data, int position)
         }
         else
         {
-            printf("Unable to insert the data at the given position!");
+            printf("\nUnable to insert the data at the given position!");
         }
     }
 }
@@ -102,7 +102,7 @@ void displayList()
     struct node *temp;
     if(head == NULL)
     {
-        printf("List is empty!");
+        printf("\nList is empty!");
     }
     else
     {

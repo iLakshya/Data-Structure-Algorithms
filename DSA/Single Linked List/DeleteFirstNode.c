@@ -6,19 +6,22 @@ struct node
     struct node *next;
 }*head;
 void createList(int n);
-void insertAtBeginning(int data);
+void deleteFirstNode();
 void displayList();
 int main()
 {
-    int n, data;
+    int n, data, choice;
     printf("Enter the total number of nodes: ");
     scanf("%d", &n);
     createList(n);
     printf("Data in the list is:\n");
     displayList();
-    printf("\nEnter data to insert at the beginning of the list: ");
-    scanf("%d", &data);
-    insertAtBeginning(data);
+    printf("\nPress 1 to delete the first node: ");
+    scanf("%d", &choice);
+    if(choice == 1)
+    {
+        deleteFirstNode();
+    }
     printf("\nUpdated data in the list is:\n");
     displayList();
     return 0;
@@ -30,7 +33,7 @@ void createList(int n)
     head = (struct node *)malloc(sizeof(struct node));
     if(head == NULL)
     {
-        printf("\nUnable to allocate memory!");
+        printf("Unable to allocate memory!");
         exit(0);
     }
     else
@@ -61,20 +64,20 @@ void createList(int n)
         printf("Linked List Created Successfully!\n");
     }
 }
-void insertAtBeginning(int data)
+void deleteFirstNode()
 {
-    struct node *newNode;
-    newNode = (struct node *)malloc(sizeof(struct node));
-    if(newNode == NULL)
+    struct node *toDelete;
+    if(head == NULL)
     {
-        printf("\nUnable to allocate memory!");
+        printf("\nList is already emoty!");
     }
     else
     {
-        newNode -> data = data;
-        newNode -> next = head;
-        head = newNode;
-        printf("\nData inserted successfully at the beginning!\n");
+        toDelete = head;
+        head = head -> next;
+        printf("Data deleted: %d", toDelete -> data);
+        free(toDelete);
+        printf("\nData deleted successfully!");
     }
 }
 void displayList()
