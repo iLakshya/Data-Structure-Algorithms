@@ -6,19 +6,19 @@ struct node
     struct node *next;
 }*head;
 void createList(int n);
-void deleteMiddleNode(int position);
+void deleteList();
 void displayList();
 int main()
 {
-    int n, data, position;
+    int n, data, choice;
     printf("Enter the total number of nodes: ");
     scanf("%d", &n);
     createList(n);
     printf("Data in the list is:\n");
     displayList();
-    printf("\nEnter the position you want to delete: ");
-    scanf("%d", &position);
-    deleteMiddleNode(position);
+    printf("\nPress 1 to delete all the nodes in the list: ");
+    scanf("%d", &choice);
+    deleteList();
     printf("\nUpdated data in the list is:\n");
     displayList();
     return 0;
@@ -61,43 +61,16 @@ void createList(int n)
         printf("Linked List Created Successfully!\n");
     }
 }
-void deleteMiddleNode(int position)
+void deleteList()
 {
-    int i;
-    struct node *toDelete, *prevNode;
-    if(head == NULL)
+    struct node *temp;
+    while(head!=NULL)
     {
-        printf("\nList is already emoty!");
+        temp = head;
+        head = head -> next;
+        free(temp);
     }
-    else
-    {
-        toDelete = head;
-        prevNode = head;
-        for(i=2;i<=position;i++)
-        {
-            prevNode = toDelete;
-            toDelete = toDelete -> next;
-            if(toDelete == NULL)
-            {
-                break;
-            }
-        }
-        if(toDelete!=NULL)
-        {
-            if(toDelete == head)
-            {
-                head = head -> next;
-            }
-            prevNode -> next = toDelete -> next;
-            toDelete -> next = NULL;
-            free(toDelete);
-            printf("\nData deleted successfully!");
-        }
-        else
-        {
-            printf("Invalid position unable to delete!");
-        }
-    }
+    printf("Data deleted successfully!");
 }
 void displayList()
 {
